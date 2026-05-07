@@ -6,7 +6,8 @@
 
 body {
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-family: Georgia, "Times New Roman", serif;
   background: linear-gradient(135deg, #fff1f6, #ffd8e8, #fff7fb);
   color: #7a2942;
@@ -109,7 +110,7 @@ button {
   }
 }
 
-/* ENVELOPE SCENE */
+/* ENVELOPE */
 .envelope-scene {
   min-height: 100vh;
   display: grid;
@@ -227,13 +228,17 @@ button {
 
 .heart-button span {
   position: absolute;
-  top: 52px;
-  left: 0;
-  right: 0;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
   color: white;
-  font-size: 20px;
-  font-weight: bold;
-  text-shadow: 0 2px 5px rgba(0,0,0,0.35);
+  font-size: 22px;
+  font-weight: 900;
+  width: 130px;
+  text-align: center;
+  text-shadow: 0 3px 8px rgba(120, 0, 60, 0.95);
+  z-index: 20;
+  pointer-events: none;
 }
 
 .envelope.open .heart-button {
@@ -318,7 +323,7 @@ button {
   height: 560px;
   position: relative;
   transform-style: preserve-3d;
-  animation: rotateCarousel 18s linear 1 forwards;
+  animation: rotateCarousel 26s linear 1 forwards;
 }
 
 .memory-photo {
@@ -381,7 +386,10 @@ button {
 /* AFTER ROTATION GRID */
 .memory-scene.grid-mode {
   display: block;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: auto;
+  padding: 40px 30px 90px;
 }
 
 .memory-scene.grid-mode h1 {
@@ -494,6 +502,7 @@ button {
 @media (max-width: 800px) {
   body {
     overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .intro-box h1 {
@@ -518,8 +527,10 @@ button {
   }
 
   .heart-button span {
-    top: 32px;
-    font-size: 14px;
+    top: 34px;
+    font-size: 15px;
+    width: 95px;
+    text-shadow: 0 3px 8px rgba(120, 0, 60, 1);
   }
 
   .letter-paper {
@@ -563,8 +574,37 @@ button {
   .p5 { transform: rotateY(240deg) translateZ(250px); }
   .p6 { transform: rotateY(300deg) translateZ(250px); }
 
+  .memory-scene.grid-mode {
+    min-height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 30px 18px 80px;
+  }
+
+  .memory-scene.grid-mode h1 {
+    font-size: 38px;
+    margin: 24px 0 34px;
+  }
+
   .memory-scene.grid-mode .carousel {
+    width: 100%;
+    display: grid;
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .memory-scene.grid-mode .memory-photo {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+  }
+
+  .memory-scene.grid-mode .memory-photo img {
+    height: 310px;
+  }
+
+  .final-card {
+    padding: 38px 24px;
   }
 
   .final-card h1 {
