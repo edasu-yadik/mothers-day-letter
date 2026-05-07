@@ -7,7 +7,6 @@ const openBtn = document.getElementById("openBtn");
 const message = document.getElementById("message");
 const memoryBtn = document.getElementById("memoryBtn");
 const memoryScene = document.getElementById("memoryScene");
-const carousel = document.getElementById("carousel");
 const finalScene = document.getElementById("finalScene");
 const song = document.getElementById("song");
 const heartLayer = document.getElementById("heartLayer");
@@ -81,16 +80,16 @@ memoryBtn.addEventListener("click", () => {
 function startMemorySequence() {
   setTimeout(() => {
     memoryScene.classList.add("grid-mode");
-  }, 18500);
+  }, 26500);
 
   setTimeout(() => {
     memoryScene.classList.add("fade-out");
-  }, 25500);
+  }, 36500);
 
   setTimeout(() => {
     memoryScene.classList.add("hidden");
     finalScene.classList.remove("hidden");
-  }, 26800);
+  }, 37800);
 }
 
 function createHeart() {
