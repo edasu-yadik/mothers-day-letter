@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canım Annem</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <audio
+      id="song"
+      src="music/Candan-Ercetin-Annem.mp3"
+      preload="auto"
+    ></audio>
+
+    <div class="heart-bubbles"></div>
+
+    <main class="scene">
+      <section id="intro" class="intro">
+        <h1>Canım Annem 💗</h1>
+        <p>
+          Bu çiçek notunun içinde sana kendi ellerimle hazırladığım küçük bir
+          sürpriz var.
+        </p>
+        <button id="startBtn">Sürprizi Başlat ✨</button>
+      </section>
+
+      <section id="envelopeScene" class="envelope-scene hidden">
+        <div id="envelope" class="envelope">
+          <div class="envelope-back"></div>
+
+          <div id="letterPaper" class="letter-paper">
+            <h2>Canım Annem 💗</h2>
+            <p id="message"></p>
+
+            <button id="galleryBtn" class="gallery-btn hidden">
+              Anılarımızı Aç 📸
+            </button>
+          </div>
+
+          <div class="left-triangle"></div>
+          <div class="right-triangle"></div>
+          <div class="bottom-triangle"></div>
+          <div class="top-flap"></div>
+
+          <button id="openBtn" class="heart-button">
+            <span>Zarfı Aç</span>
+            <strong>💗</strong>
+          </button>
+        </div>
+      </section>
+
+      <section id="gallery" class="gallery hidden">
+        <h1>Anılarımız 💕</h1>
+
+        <div class="photo-grid">
+          <div class="photo-card">
+            <img src="images/photos/photo1.jpg" />
+            <p>En güzel anılarımızdan biri.</p>
+          </div>
+          <div class="photo-card">
+            <img src="images/photos/photo2.jpg" />
+            <p>Uzakta olsam da hep yanımdasın.</p>
+          </div>
+          <div class="photo-card">
+            <img src="images/photos/photo3.jpg" />
+            <p>Gülüşün bana her zaman güç veriyor.</p>
+          </div>
+          <div class="photo-card">
+            <img src="images/photos/photo4.jpg" />
+            <p>İyi ki benim annemsin.</p>
+          </div>
+          <div class="photo-card">
+            <img src="images/photos/photo5.jpg" />
+            <p>Senin sevgin benim en güvenli yerim.</p>
+          </div>
+          <div class="photo-card">
+            <img src="images/photos/photo6.jpg" />
+            <p>Kalbim her zaman seninle.</p>
+          </div>
+        </div>
+
+        <button id="finalBtn" class="final-btn">Final Mesajını Aç 💌</button>
+      </section>
+
+      <section id="finalScreen" class="final-screen hidden">
+        <h1>Anneler Günün Kutlu Olsun 💗</h1>
+        <p>Uzakta olsam da kalbim hep seninle anne.</p>
+        <p>Seni çok seviyorum.</p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
