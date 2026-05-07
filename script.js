@@ -84,12 +84,12 @@ function startMemorySequence() {
 
   setTimeout(() => {
     memoryScene.classList.add("fade-out");
-  }, 36500);
+  }, 31500);
 
   setTimeout(() => {
     memoryScene.classList.add("hidden");
     finalScene.classList.remove("hidden");
-  }, 37800);
+  }, 32700);
 }
 
 function createHeart() {
