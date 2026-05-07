@@ -1,149 +1,112 @@
-const openBtn = document.getElementById("openBtn");
-const envelope = document.querySelector(".envelope");
-const typedText = document.getElementById("typedText");
-const memoryBtn = document.getElementById("memoryBtn");
-const gallery = document.getElementById("gallery");
+const intro = document.getElementById("intro");
+const startBtn = document.getElementById("startBtn");
+const envelopeScene = document.getElementById("envelopeScene");
 const envelopeWrapper = document.getElementById("envelopeWrapper");
-const bgMusic = document.getElementById("bgMusic");
-const finalBtn = document.getElementById("finalBtn");
-const finalSection = document.getElementById("finalSection");
+const envelope = document.getElementById("envelope");
+const openBtn = document.getElementById("openBtn");
+const message = document.getElementById("message");
+const memoryBtn = document.getElementById("memoryBtn");
+const memoryScene = document.getElementById("memoryScene");
+const carousel = document.getElementById("carousel");
+const finalScene = document.getElementById("finalScene");
+const song = document.getElementById("song");
+const heartLayer = document.getElementById("heartLayer");
 
-const message = `
-Canım annem,
+const letterText = `Canım annem,
 
-Uzakta olsam bile kalbim hep seninle.
+Uzakta olsam da kalbim her zaman seninle.
 
-Senin sevgin bana her zaman güç verdi.
-Hayatım boyunca bana verdiğin emekleri,
-sevgiyi ve desteği hiçbir zaman unutmayacağım.
+Her yıl sana uzaktan çiçek gönderiyorum ama bu yıl sana kendi emeğimle küçük bir sürpriz hazırlamak istedim.
 
-İyi ki varsın.
-İyi ki benim annemsin.
+Bana verdiğin sevgi, sabır ve emek için ne kadar teşekkür etsem az.
 
-Anneler günün kutlu olsun 💖
-`;
+Sen benim en güvenli yerim, en büyük şansım ve en güzel iyikimsin.
+
+Anneler Günün kutlu olsun. Seni çok seviyorum. 💗`;
+
+let opened = false;
+
+startBtn.addEventListener("click", () => {
+  intro.classList.add("leave");
+
+  setTimeout(() => {
+    intro.classList.add("hidden");
+    envelopeScene.classList.remove("hidden");
+  }, 900);
+});
 
 openBtn.addEventListener("click", () => {
+  if (opened) return;
+  opened = true;
 
   envelope.classList.add("open");
 
-  bgMusic.play();
+  song.currentTime = 0;
+  song.volume = 0.75;
+  song.play().catch(() => {});
 
   setTimeout(() => {
-    typeMessage(message);
-  }, 1800);
-
+    typeLetter(letterText);
+  }, 1900);
 });
 
-function typeMessage(text){
-
-  let index = 0;
-
-  const interval = setInterval(() => {
-
-    typedText.textContent += text[index];
-
-    index++;
-
-    if(index >= text.length){
-
-      clearInterval(interval);
-
-      memoryBtn.classList.remove("hidden");
-    }
-
-  }, 60);
-
-}
-
-/* ANILAR */
-
-memoryBtn.addEventListener("click", () => {
-
-  envelopeWrapper.style.transition = "2s";
-  envelopeWrapper.style.opacity = "0";
-  envelopeWrapper.style.transform = "translateY(-300px) scale(.3)";
-
-  setTimeout(() => {
-
-    document.querySelector(".hero").style.display = "none";
-
-    gallery.classList.remove("hidden");
-
-    revealPhotosOneByOne();
-
-  }, 2000);
-
-});
-
-function revealPhotosOneByOne(){
-
-  const photos = [
-    {
-      src:"images/photos/photo1.jpg",
-      text:"En güzel anılarımızdan biri 💖"
-    },
-    {
-      src:"images/photos/photo2.jpg",
-      text:"Uzakta olsam da hep yanımdasın 🌸"
-    },
-    {
-      src:"images/photos/photo3.jpg",
-      text:"Gülüşün bana güç veriyor ✨"
-    },
-    {
-      src:"images/photos/photo4.jpg",
-      text:"İyi ki benim annemsin 💕"
-    },
-    {
-      src:"images/photos/photo5.jpg",
-      text:"Sen benim en güvenli yerimsin 💌"
-    },
-    {
-      src:"images/photos/photo6.jpg",
-      text:"Kalbim hep seninle anne 💗"
-    }
-  ];
-
-  const slideCard = document.querySelector(".slide-card");
-  const slideImage = document.getElementById("slideImage");
-  const slideText = document.getElementById("slideText");
-
-  let index = 0;
+function typeLetter(text) {
+  message.textContent = "";
+  let i = 0;
 
   const interval = setInterval(() => {
+    message.textContent += text[i];
+    i++;
 
-    index++;
-
-    if(index >= photos.length){
-
+    if (i >= text.length) {
       clearInterval(interval);
 
       setTimeout(() => {
-        finalBtn.classList.remove("hidden");
-      },1000);
-
-      return;
+        memoryBtn.classList.remove("hidden");
+      }, 900);
     }
-
-    slideCard.classList.remove("change");
-    void slideCard.offsetWidth;
-
-    slideImage.src = photos[index].src;
-    slideText.textContent = photos[index].text;
-
-    slideCard.classList.add("change");
-
-  },3000);
-
+  }, 75);
 }
 
-/* FINAL */
+memoryBtn.addEventListener("click", () => {
+  envelopeWrapper.classList.add("leave");
 
-finalBtn.addEventListener("click", () => {
-
-  gallery.style.display = "none";
-
-  finalSection.classList.remove("hidden");
-
+  setTimeout(() => {
+    envelopeScene.classList.add("hidden");
+    memoryScene.classList.remove("hidden");
+    startMemorySequence();
+  }, 1500);
 });
+
+function startMemorySequence() {
+  setTimeout(() => {
+    memoryScene.classList.add("grid-mode");
+  }, 18500);
+
+  setTimeout(() => {
+    memoryScene.classList.add("fade-out");
+  }, 25500);
+
+  setTimeout(() => {
+    memoryScene.classList.add("hidden");
+    finalScene.classList.remove("hidden");
+  }, 26800);
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+  heart.textContent = Math.random() > 0.5 ? "💗" : "💕";
+
+  heart.style.top = Math.random() * 95 + "vh";
+  heart.style.animationDuration = 7 + Math.random() * 7 + "s";
+  heart.style.fontSize = 18 + Math.random() * 28 + "px";
+
+  heartLayer.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 14000);
+}
+
+setInterval(createHeart, 450);
